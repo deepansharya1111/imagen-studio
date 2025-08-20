@@ -14,4 +14,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Command to run the application
-CMD ["gunicorn", "--bind", ":8080", "main:me"]
+# The --access-logfile and --error-logfile flags are set to '-' to direct logs to stdout/stderr
+# so they can be captured by Cloud Run Logging.
+CMD ["gunicorn", "--bind", ":8080", "--access-logfile", "-", "--error-logfile", "-", "main:me"]

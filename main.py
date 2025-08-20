@@ -740,6 +740,7 @@ def app():
                             composition_options = []
                             for c in [
                                 "None",
+                                "Shallow depth of field",
                                 "Abstract composition",
                                 "Action shot",
                                 "Aerial",
@@ -797,7 +798,6 @@ def app():
                                 "Profile shot",
                                 "Reflection",
                                 "Rule of thirds",
-                                "Shallow depth of field",
                                 "Shot from above",
                                 "Shot from below",
                                 "Silhouette",
@@ -901,6 +901,7 @@ def app():
                             mood_options = []
                             for mood in [
                                 "None",
+                                "Futuristic",
                                 "Calm",
                                 "Peaceful",
                                 "Serene",
@@ -940,7 +941,6 @@ def app():
                                 "Loud",
                                 "Chaotic",
                                 "Orderly",
-                                "Futuristic",
                                 "Ancient",
                                 "Timeless",
                             ]:
@@ -1366,10 +1366,15 @@ def app():
                                             bucket_name, blob_name = img.replace("gs://", "").split("/", 1)
                                             bucket = storage_client.bucket(bucket_name)
                                             blob = bucket.blob(blob_name)
+                                            # Use the service account associated with the Cloud Run service to sign the URL
+                                            project_id = os.environ.get("PROJECT_ID")
+                                            sa_email = f"sa-imagen-studio@{project_id}.iam.gserviceaccount.com"
                                             signed_url = blob.generate_signed_url(
                                                 version="v4",
                                                 expiration=datetime.timedelta(minutes=60),
                                                 method="GET",
+                                                service_account_email=sa_email,
+                                                access_token=None,  # Use IAM to sign
                                             )
                                             me.image(
                                                 src=signed_url,
