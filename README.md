@@ -188,6 +188,15 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
   --member="serviceAccount:$SA_EMAIL" \
   --role="roles/storage.admin"
 
+# Grant Service Account Token Creator role (to allow the service account to sign URLs)
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:$SA_EMAIL" \
+  --role="roles/iam.serviceAccountTokenCreator"
+
+# Grant Service Usage Consumer role (to allow the service account to use enabled services)
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:$SA_EMAIL" \
+  --role="roles/serviceusage.serviceUsageConsumer"
 ```
 
 ### Deploy to Cloud Run

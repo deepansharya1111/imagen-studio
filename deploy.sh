@@ -107,6 +107,12 @@ gcloud projects add-iam-policy-binding "$PROJECT_ID" \
     --role="roles/iam.serviceAccountTokenCreator" \
     --condition=None >/dev/null # Suppress verbose output
 
+# Grant Service Usage Consumer role to allow the service account to use enabled services
+gcloud projects add-iam-policy-binding "$PROJECT_ID" \
+    --member="serviceAccount:$SA_EMAIL" \
+    --role="roles/serviceusage.serviceUsageConsumer" \
+    --condition=None >/dev/null # Suppress verbose output
+
 echo "IAM roles granted successfully."
 
 

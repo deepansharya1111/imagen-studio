@@ -95,7 +95,7 @@ class State:
     image_color_tone: str = "Cinematic"
     image_lighting: str = "None"
     image_composition: str = "Wide angle"
-    image_aspect_ratio: str = "1:1"
+    image_aspect_ratio: str = "16:9"
     image_art_style: str = "None"
     image_mood_atmosphere: str = "None"
     image_texture: str = "None"

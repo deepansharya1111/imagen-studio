@@ -49,7 +49,7 @@ class Config:
     TITLE = "IMAGEN STUDIO"
     IMAGE_CREATION_BUCKET = os.environ.get("IMAGE_CREATION_BUCKET", "")
     PROJECT_ID = os.environ.get("PROJECT_ID", "")
-    LOCATION = os.getenv("LOCATION", "us-central1")
+    LOCATION = os.getenv("LOCATION", "asia-south1")
     MODEL_GEMINI_MULTIMODAL = "gemini-2.5-flash"
     MODEL_IMAGEN2 = "imagegeneration@006"
     MODEL_IMAGEN_NANO = "imagegeneration@004"
