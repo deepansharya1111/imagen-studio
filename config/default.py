@@ -85,7 +85,6 @@ class Config:
             # Phase 2: Advanced Composition Tools
             "focal_length",
             "aperture",
-            "depth_of_field",
             "camera_angle",
             "focus_technique",
             "motion_effect",
