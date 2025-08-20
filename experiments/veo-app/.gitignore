@@ -1,0 +1,14 @@
+venv
+.venv
+__pycache__
+.ruff_cache
+.env
+.env*
+.vscode
+.DS_Store
+
+samples/
+
+.gemini/
+
+.commit.txt
